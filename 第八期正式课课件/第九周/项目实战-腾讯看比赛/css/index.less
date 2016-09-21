@@ -75,12 +75,12 @@ a, a:hover, a:visited, a:active {
             top: unit((@h)-4, px);
             left: -15px;
             z-index: 10;
-            padding: 20px 15px;
+            padding: 0 15px;
             width: 90px;
-            height: 130px;
+            height: 0;
             overflow: hidden;
-            /*background: rgba(255, 255, 255, 0.5); ->不兼容*/
-            /*opacity: 0.5; ->里面的子元素也都透明了*/
+            .transition(@duration: 0.3s);
+
             img {
               display: block;
               width: 90px;
@@ -97,8 +97,14 @@ a, a:hover, a:visited, a:active {
             .down;
             z-index: 9;
             background: @color-white;
-            opacity: 0.8;
-            filter: alpha(opacity=80);
+            .opacity(@v: 0.6);
+          }
+
+          &:hover {
+            .down, .downBg {
+              padding: 20px 15px;
+              height: 130px;
+            }
           }
         }
       }
@@ -123,6 +129,71 @@ a, a:hover, a:visited, a:active {
     }
   }
 }
+
+/*--CON BODY--*/
+.conBody {
+  margin: 20px auto;
+  width: unit(@width-con, px);
+  height: 0; /*高度是需要在JS中计算的:一屏幕的高度-HEADER的高度64-MARGIN40*/
+  overflow: hidden;
+}
+
+/*MENU*/
+.menu {
+  width: 198px;
+  background: @color-white;
+  border: 1px solid @color-border;
+  li {
+    a {
+      display: block;
+      position: relative;
+      padding-left: 24px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 16px;
+      border-left: 5px solid transparent;
+      i {
+        display: none;
+        position: absolute;
+        right: 10px;
+        top: 17px;
+        width: 16px;
+        height: 16px;
+
+        .arrow {
+          position: absolute;
+          top: 2px;
+          left: 50%;
+          z-index: 5;
+          margin-left: -3px;
+          width: 0;
+          height: 0;
+          font-size: 0;
+          border: 6px solid transparent;
+          border-left-color: @color-blue;
+        }
+
+        .over {
+          z-index: 6;
+          margin-left: -5px;
+          border-left-color: @color-blue-lite;
+        }
+      }
+
+      &:hover, &.bg {
+        color: @color-blue;
+        background: @color-blue-lite;
+        border-left-color: @color-blue;
+      }
+      &.bg {
+        i {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
 
 
 
