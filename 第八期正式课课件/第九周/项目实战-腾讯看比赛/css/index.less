@@ -12,6 +12,12 @@ a, a:hover, a:visited, a:active {
   color: @color-gray;
 }
 
+/*ISCROLL*/
+.iScrollIndicator {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+
 /*--HEADER--*/
 .header {
   @h: 63;
@@ -140,6 +146,8 @@ a, a:hover, a:visited, a:active {
 
 /*MENU*/
 .menu {
+  position: relative;
+  overflow: hidden;
   width: 198px;
   background: @color-white;
   border: 1px solid @color-border;

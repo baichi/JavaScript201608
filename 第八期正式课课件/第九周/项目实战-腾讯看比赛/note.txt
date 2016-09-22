@@ -44,6 +44,23 @@
  /*background: rgba(255, 255, 255, 0.5); ->不兼容*/
  /*opacity: 0.5; ->里面的子元素也都透明了*/
 
+6、使用iscroll-5.1.3.min.js实现页面中某一个区域的局部滚动:
+
+   为什么使用ISCROLL?
+   ->在移动端项目开发中，使用position:fixed不兼容(大部分手机都不兼容)，所以在移动端我们尽量少position:fixed的使用，尤其是对于固定定位一个评论框的部分，使用这个样式肯定会出问题
+   ->解决这个问题我们使用ISCROLL实现局部滚动
+
+   new IScroll('.menu', {
+      scrollbars: true //->显示滚动条:当new IScroll的时候,并且设置展示滚动条,iscroll会默认的向当前滚动的容器.menu中追加一个<div class='iScrollVerticalScrollbar'> 这个div就是我们的滚动条，它的样式中默认是position: absolute;，所以如果想让它在menu中，需要给menu加：position: relative;
+
+      mouseWheel: true //->设置鼠标滚轮滚动的时候它也跟着滚动
+      bounce: false //->去除到达边界的反弹效果
+   });
+
+   当我们new IScroll的时候，一些前提：
+   ->menu区域的高度是固定的
+   ->menu中的第一个子元素(也就是我们真实内容的区域)的高度需要比menu大
+   当初始化的时候，ISCROLL会把menu区域的第一个子元素做容器内容的局部滚动，反过来，我们需要滚动的内容必须在menu的第一个子元素中
 
 
 

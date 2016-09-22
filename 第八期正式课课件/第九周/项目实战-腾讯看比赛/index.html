@@ -51,30 +51,30 @@
     <!--MENU-->
     <div class="menu">
         <ul>
-            <li>
-                <a href="#" class="bg">
-                    NBA
-                    <i>
-                        <span class="arrow over"></span>
-                        <span class="arrow"></span>
-                    </i>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    NBA
-                    <i>
-                        <span class="arrow over"></span>
-                        <span class="arrow"></span>
-                    </i>
-                </a>
-            </li>
+
         </ul>
     </div>
 
 </section>
 
+<!--EJS模板渲染-->
+<script charset="utf-8" type="text/javascript" src="js/ejs.min.js"></script>
+<script charset="utf-8" type="text/template" id="menuTemplate">
+    <%$.each(menuData,function(index,item){%>
+    <li>
+        <a href="#<%=item.hash%>">
+            <%=item.title%>
+            <i>
+                <span class="arrow over"></span>
+                <span class="arrow"></span>
+            </i>
+        </a>
+    </li>
+    <%});%>
+</script>
+
 <script charset="utf-8" type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/iscroll-5.1.3.min.js"></script>
 <script charset="utf-8" type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
