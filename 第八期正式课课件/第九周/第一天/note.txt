@@ -71,7 +71,7 @@
     7、盒子模型
       column:多列布局
       box-sizing:border-box/padding-box/content-box; CSS3提供的新的盒子模型
-      flexbox:伸缩盒子模型
+      flexbox:伸缩盒子模型 http://www.zhufengpeixun.com/qianduanjishuziliao/CSS3heHTML5zhuanti/2016-06-24/439.html
 
     8、@font-face 导入网络字体包
     9、@media 媒体查询,主要用来做响应式布局的
