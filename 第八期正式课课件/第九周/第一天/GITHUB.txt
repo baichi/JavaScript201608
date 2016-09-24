@@ -1,0 +1,28 @@
+1、gitHub博客
+  我们可以把写好的前端的项目资源文件(HTML/CSS/JS/IMG...)通过gitHub这个平台进行发布,生成一个网址,以后别人通过网址就可以看到项目了(不是项目原代码,而是项目的展示)
+
+  https://daneden.github.io/animate.css/ 这个地址就是daneden通过gitHub的博客发布出来的一个项目,如果想看项目的源代码:daneden是它gitHub的用户名 \ animate.css是它gitHub的仓库名 https://github.com/daneden/animate.css/
+
+2、使用gitHub
+   建议大家养成使用gitHub的习惯
+   ->我们前端需要的框架或者类库的官方源代码及说明在gitHub上都有,我们以后在学习的话可以通过查看源代码来学习
+
+   ->如果我们的gitHub的粉丝比较多的话,对于自己未来的职业生涯非常的有帮助,很多大公司的核心部门面试的话需要你的gitHub账号
+   任务：把珠峰培训交给大家的DOM库、AJAX库、动画库、事件库整理完善一下，传到自己的gitHub上，并且写出完善的使用文档(README.MD)
+        把你所知道的框架或者类库，克隆到自己的仓库一份，以后有时间可以从查看官方源代码的角度上去从新学习一遍:jQuery、Zepto、sea.js、require.js、Angular、React、React Native、vue.js、swiper、iscroll、touch.js(https://github.com/Clouda-team/touch.code.baidu.com.git)、ejs...
+
+3、如何在gitHub上发布?
+  ->创建一个仓库
+    README.MD 是对仓库的描述,可以在这个文件中编写本仓库托管框架的使用或者描述等
+
+
+
+
+
+
+
+
+
+
+
+
