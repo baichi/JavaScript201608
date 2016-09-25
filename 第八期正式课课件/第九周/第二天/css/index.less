@@ -197,7 +197,7 @@ a, a:active, a:hover, a:visited, a:target {
       position: absolute;
       top: 0;
       left: 0;
-      width: 50%;
+      width: 0;
       height: .04rem;
       background: @color-red;
       .transition;
@@ -239,6 +239,54 @@ a, a:active, a:hover, a:visited, a:target {
     .type {
       float: left;
       width: 32%;
+    }
+  }
+}
+
+/*MATCH LIST*/
+.matchList {
+  padding: .2rem .3rem;
+  height: 2.14rem;
+  background: @color-white;
+  overflow: hidden;
+
+  .wrapper {
+    height: 100%;
+
+    li {
+      float: left;
+      margin-right: .2rem;
+      width: 2.2rem;
+      height: 100%;
+
+      div {
+        position: relative;
+        height: 1.24rem;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+        span {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          padding: .08rem;
+          height: .31rem;
+          line-height: .31rem;
+          background: rgba(0, 0, 0, 0.5);
+          color: @color-white;
+        }
+      }
+
+      p {
+        line-height: .3rem;
+      }
+
+      &.bg {
+        p {
+          color: @color-red;
+        }
+      }
     }
   }
 }

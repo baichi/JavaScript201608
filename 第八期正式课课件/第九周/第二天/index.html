@@ -51,23 +51,42 @@
 
 <!--MATCH-->
 <section class="match">
-    <div class="top">
-        <div class="home">
-            <img src="http://mat1.gtimg.com/sports/nba/logo/1602/9.png"/>
-            <span>90</span>
+    <script type="text/template" id="matchTemplate">
+        <div class="top">
+            <div class="home">
+                <img src="<%=matchInfo.leftBadge%>"/>
+                <span><%=matchInfo.leftGoal%></span>
+            </div>
+            <div class="time"><%=matchInfo.startTime.myFormatTime('{1}月{2}日 {3}:{4}')%></div>
+            <div class="away">
+                <span><%=matchInfo.rightGoal%></span>
+                <img src="<%=matchInfo.rightBadge%>"/>
+            </div>
         </div>
-        <div class="time">06月09日 09:00</div>
-        <div class="away">
-            <span>120</span>
-            <img src="http://mat1.gtimg.com/sports/nba/logo/1602/9.png"/>
+        <div class="center"><span class="progress"></span></div>
+        <div class="bottom">
+            <div class="home" type="1"><%=matchInfo.leftSupport%></div>
+            <div class="type"><%=matchInfo.matchDesc%></div>
+            <div class="away" type="2"><%=matchInfo.rightSupport%></div>
         </div>
-    </div>
-    <div class="center"><span class="progress"></span></div>
-    <div class="bottom">
-        <div class="home">3637854</div>
-        <div class="type">NBA季后赛</div>
-        <div class="away">3637854</div>
-    </div>
+    </script>
+</section>
+
+<!--MATCH LIST-->
+<section class="matchList">
+    <ul class="wrapper">
+        <script type="text/template" id="matchListTemplate">
+            <%$.each(data,function(index,item){%>
+            <li class="<%=index===0?'bg':null%>">
+                <div>
+                    <img src="<%=item.pic%>"/>
+                    <span><%=item.duration%></span>
+                </div>
+                <p><%=item.title%></p>
+            </li>
+            <%})%>
+        </script>
+    </ul>
 </section>
 
 <script charset="utf-8" type="text/javascript" src="js/zepto.min.js"></script>
