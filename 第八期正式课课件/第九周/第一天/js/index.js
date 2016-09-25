@@ -9,7 +9,9 @@ var bannerRender = (function () {
     var step = 1,
         count = 0,
         speed = 200,
-        autoInterval = 3000;
+        autoInterval = 3000,
+        maxL = 0,
+        minL = 0;
     var winW = document.documentElement.clientWidth;
 
     function bindWrapper(result) {
@@ -48,7 +50,6 @@ var bannerRender = (function () {
                 oImg.onload = function () {
                     curImg.src = this.src;
                     curImg.isLoad = true;
-                    curImg.parentNode.style.height = '100%';
                     oImg = null;
                 }
             }
@@ -68,6 +69,7 @@ var bannerRender = (function () {
         this['strX'] = point.clientX;
         this['strY'] = point.clientY;
         this['strL'] = parseFloat(wrapper.style.left);
+        wrapper.style.webkitTransitionDuration = '0s';
     };
     var move = function (ev) {
         var point = ev.touches[0];
@@ -77,11 +79,57 @@ var bannerRender = (function () {
         this['swipeDir'] = swipeDir(this['changeX'], this['changeY']);
 
         if (this['isFlag'] && /(left|right)/.test(this['swipeDir'])) {
-            wrapper.style.left = this['strL'] + this['changeX'] + 'px';
+            var curL = this['strL'] + this['changeX'];
+            curL = curL > maxL ? maxL : (curL < minL ? minL : curL);
+            wrapper.style.left = curL + 'px';
         }
     };
     var end = function (ev) {
-
+        var isFlag = this['isFlag'],
+            dir = this['swipeDir'],
+            changeX = this['changeX'];
+        if (isFlag && /(left|right)/.test(dir)) {
+            if (Math.abs(changeX) >= winW / 2) {
+                if (dir === 'left') {
+                    step++;
+                }
+                if (dir === 'right') {
+                    step--;
+                }
+            }
+            wrapper.style.webkitTransitionDuration = speed / 1000 + 's';
+            wrapper.style.left = -step * winW + 'px';
+            lazyImg();
+            wrapper.addEventListener('transitionend', function () {
+                wrapper.style.webkitTransitionDuration = '0s';
+                if (step === count - 1) {
+                    step = 1;
+                    wrapper.style.left = -step * winW + 'px';
+                    lazyImg();
+                }
+                if (step === 0) {
+                    step = count - 2;
+                    wrapper.style.left = -step * winW + 'px';
+                    lazyImg();
+                }
+            }, false);
+            //window.setTimeout(function () {
+            //    wrapper.style.webkitTransitionDuration = '0s';
+            //    if (step === count - 1) {
+            //        step = 1;
+            //        wrapper.style.left = -step * winW + 'px';
+            //        lazyImg();
+            //    }
+            //    console.log(step);
+            //    if (step === 0) {
+            //        step = count - 2;
+            //        console.log(step);
+            //        wrapper.style.left = -step * winW + 'px';
+            //        console.log(-step * winW);
+            //        lazyImg();
+            //    }
+            //}, speed);
+        }
     };
 
     return {
@@ -93,6 +141,7 @@ var bannerRender = (function () {
                 cache: false,
                 success: function (result) {
                     count = result.length + 2;
+                    minL = -(count - 1) * winW;
 
                     //->EJS
                     bindWrapper(result);
